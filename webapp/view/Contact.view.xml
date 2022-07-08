@@ -1,0 +1,76 @@
+<mvc:View
+	controllerName="gfservicerequests.controller.Contact"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+    <!-- <Panel
+		id="containerLayout"
+		width="70%"> -->
+        <Page
+		title="Page"
+		class="sapUiContentPadding" >
+        <customHeader>
+			<Toolbar>
+				<!-- <Button type="Back" press="onPress" /> -->
+				<ToolbarSpacer/>
+				<Title text="Welcome to self service portal" level="H2"/>
+				<ToolbarSpacer/>
+				<!-- <Button icon="sap-icon://edit" type="Transparent" press="onPress" ariaLabelledBy="editButtonLabel"/> -->
+			</Toolbar>
+
+		</customHeader>
+    <Table id="idProductsTable" width="100%"
+		inset="false"
+		items="{
+			path: '/CountryContactsRootCollection',
+			sorter: {
+				path: 'ZContactMatrixID'
+			}
+		}">
+		
+        <headerToolbar>
+									<Toolbar>
+										<Title text=""/>
+										<ToolbarSpacer/>
+										<Button text="Ticket Portal" press="onAddRelatedDeal" enabled="true" id="idAddRelatedDeal"/>
+                                    </Toolbar>
+								</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Available contacts" icon="sap-icon://contacts" hAlign="center"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="Country" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center"
+                icon="sap-icon://email" >
+				<Text text="Phone"/>
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Mail" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectStatus
+						text="{ZCountryText}" icon="sap-icon://functional-location"/>
+                        <ObjectStatus text="{ZCountryPhText}" icon="sap-icon://phone"/>
+                        <ObjectStatus text="{ZCountryMailText}" icon="sap-icon://email"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+    </Page>
+    <!-- </Panel> -->
+</mvc:View>

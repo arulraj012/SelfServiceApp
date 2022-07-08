@@ -1,0 +1,11 @@
+<mvc:View
+	controllerName="gfservicerequests.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+		displayBlock="true"
+		busy="{appView>/busy}"
+		busyIndicatorDelay="{appView>/delay}"
+		xmlns="sap.m"
+        xmlns:f="sap.f">
+    	
+	<SplitApp id="idAppControl" />
+</mvc:View>

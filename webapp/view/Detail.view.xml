@@ -1,0 +1,298 @@
+<mvc:View
+	controllerName="gfservicerequests.controller.Detail"
+	xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:rte="sap.ui.richtexteditor"
+          xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+          xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+          xmlns:c="sap.suite.ui.commons"
+          xmlns:layout="sap.ui.layout"
+          xmlns="sap.uxap">
+    <semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}"
+                         title="{i18n>detailTitle}"
+                         busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+        <semantic:content>
+            <ObjectPageLayout id="ObjectPageLayout"
+		showTitleInHeaderContent="true"
+		showEditHeaderButton="true"
+		editHeaderButtonPress="handleEditBtnPress"
+		upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<!-- <breadcrumbs>
+					<m:Breadcrumbs id="breadcrumbsId" currentLocationText="Object Page Example" >
+						<m:Link text="Page 1 a very long link" press="handleLink1Press"/>
+						<m:Link text="Page 2 long link" press="handleLink2Press"/>
+					</m:Breadcrumbs>
+				</breadcrumbs> -->
+
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="{Name}" wrapping="true"/>
+						<!-- <m:ObjectMarker type="Favorite" class="sapUiTinyMarginBegin"/> -->
+					</m:HBox>
+				</expandedHeading>
+
+				<snappedHeading>
+					<m:FlexBox  fitContainer="true" alignItems="Center">
+						<!-- <m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiTinyMarginEnd"/> -->
+						<m:Title text="{Name}" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+
+				<expandedContent>
+					<m:Text text="{ID}"/>
+				</expandedContent>
+
+				<snappedContent>
+					<m:Text text="{ID}"/>
+				</snappedContent>
+
+				<snappedTitleOnMobile>
+					<m:Title text="{ID}"/>
+				</snappedTitleOnMobile>
+
+				<actions>
+					<!-- <m:OverflowToolbarButton icon="sap-icon://edit" text="edit header"  tooltip="edit">
+						<m:layoutData>
+							<m:OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</m:layoutData>
+					</m:OverflowToolbarButton> -->
+					<!-- <m:OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>
+					<m:OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>
+					<m:Button text="Toggle Footer" press="toggleFooter"/> -->
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<!-- <m:Avatar class="sapUiSmallMarginEnd" src="./test-resources/sap/uxap/images/imageID_275314.png"  displaySize="L" /> -->
+
+					<!-- <layout:VerticalLayout class="sapUiSmallMarginBeginEnd"> -->
+						<!-- <m:Link text="+33 6 4512 5158"/>
+						<m:Link text="DeniseSmith@sap.com"/> -->
+                        <!-- <m:HBox> -->
+                        <m:ObjectStatus title="Status:" text="{ServiceRequestUserLifeCycleStatusCodeText}"/>
+						<!-- <m:Label text="Status:"/>
+                        <m:Label text="{ServiceRequestLifeCycleStatusCodeText}"/> -->
+						<!-- <m:ProgressIndicator percentValue="30" displayValue="30%"/> -->
+					<!-- </m:HBox> -->
+					<!-- </layout:VerticalLayout> -->
+                    <!-- <m:Panel>
+                        <c:ProcessFlow
+			id="processflow2"
+			scrollable="false"
+			nodes="{pf2>/nodes}"
+			lanes="{pf2>/lanes}"
+			headerPress="onHeaderPress">
+			<c:nodes>
+				<c:ProcessFlowNode
+					laneId="{pf2>lane}"
+					nodeId="{pf2>id}"
+					title="{pf2>title}"
+					children="{pf2>children}"
+					state="{pf2>state}"
+					stateText="{pf2>stateText}"
+					texts="{pf2>texts}"
+					focused="{pf2>focused}" />
+			</c:nodes>
+			<c:lanes>
+				<c:ProcessFlowLaneHeader
+					laneId="{pf2>id}"
+					iconSrc="{pf2>icon}"
+					text="{pf2>label}"
+					position="{pf2>position}"
+					state="{pf2>state}" />
+			</c:lanes>
+		</c:ProcessFlow>
+                    </m:Panel> -->
+
+					<!-- <layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+						<m:Image src="./test-resources/sap/uxap/images/linkedin.png"/>
+						<m:Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin"/>
+					</layout:HorizontalLayout> -->
+
+				<!-- <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label text="Hello! I am Denise and I use UxAP"/>
+					<m:VBox>
+						<m:Label text="Achieved goals"/>
+						<m:ProgressIndicator percentValue="30" displayValue="30%"/>
+					</m:VBox>
+				</layout:VerticalLayout> -->
+
+				<!-- <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Label text="San Jose, USA"/>
+				</layout:VerticalLayout> -->
+			</m:FlexBox>
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" id="goalsSection" title="Conversation">
+				<subSections>
+					<ObjectPageSubSection id="goalsSectionSS1">
+                    <m:VBox>
+                        <m:FeedInput id="interactionInput" post="onPost" showIcon="false"/>
+                        <m:List id="descriptionsList"/>
+                    </m:VBox>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" id="personalSection" title="Details" importance="Medium">
+				<subSections>
+					<ObjectPageSubSection id="personalSectionSS1" >
+						<blocks>
+                        
+                            <m:VBox class="detailsBox">
+                            <!-- <HBox>
+                                <Label class="infoTitle" text="{i18n>detailPriority}"/>
+                                <Select id="infoPrioritySelect" width="10rem" enabled="false"
+                                        selectedKey="{ServicePriorityCode}"
+                                        items="{ServiceRequest>/ServiceRequestServicePriorityCodeCollection}">
+                                    <core:Item key="{ServiceRequest>Code}" text="{ServiceRequest>Description}"/>
+                                </Select>
+                            </HBox> -->
+                            <m:HBox>
+                                <m:Label class="infoTitle" text="Subject"/>
+                                <m:Input id="infoSubjectID" width="20rem" enabled="false"
+                                        value="{Name}">
+                                       
+                                </m:Input>
+                            </m:HBox>
+                             <m:HBox>
+                                <m:Label class="infoTitle" text="Status"/>
+                                <m:Select id="infoStatusSelect" width="20rem" enabled="false"
+                                        selectedKey="{ServiceRequestUserLifeCycleStatusCode}"
+                                        items="{ServiceRequest>/ServiceRequestServiceRequestUserLifeCycleStatusCodeCollection}">
+					            <core:Item key="{ServiceRequest>Code}" text="{ServiceRequest>Description}"/>
+                                </m:Select>
+                            </m:HBox>
+
+                            <!-- <HBox>
+                                <Label class="infoTitle" text="{i18n>detailProductCategory}"/>
+                                    <Select id="infoProductCategorySelect" width="10rem" enabled="false"
+                                        selectedKey="{ProductID}" items="{ServiceRequest>/ProductCollection}">
+                                    <core:Item key="{ServiceRequest>ID}" text="{ServiceRequest>Description}"/>
+                                </Select>
+                            </HBox> -->
+                            <m:HBox>
+                                <m:Label class="infoTitle" text="Digital Offerings"/>
+                                <m:Select id="infoServiceCategorySelect" width="20rem" enabled="false"
+                                        selectedKey="{ServiceIssueCategoryID}" change="onServiceCategorySelect"
+                                        items="{categoryModel>/}">
+                                    <core:Item key="{categoryModel>Code}"
+                                               text="{categoryModel>Description}"
+                                            />
+                                </m:Select>
+                            </m:HBox>
+                             <m:HBox>
+                                <m:Label id="idNoteLabel" class="infoTitle" text="Resolution Note" visible="false"/>
+                                <rte:RichTextEditor id="idNote" width="106%" height="100px" customToolbar="false" showGroupFont="false" showGroupLink="false" showGroupInsert="false"
+									ready="onRTEready" value="{ResolutionNote_KUT}" enabled="false" showGroupClipboard="false" showGroupFontStyle="false" showGroupStructure="false"
+                                    showGroupTextAlign="false" showGroupUndo="false" visible="false" editable="false"/>
+                                <!-- <m:TextArea id="idNote" rows="6" width="100%" enabled="false" visible="false"
+                                        value="{ResolutionNote_KUT}">
+                                       
+                                </m:TextArea> -->
+                            </m:HBox>
+                             <m:HBox>
+                                <m:Label class="infoTitle" text="Created On"/>
+                                <m:Input id="createdByID" rows="6" width="20rem" enabled="false"
+                                        value="{CreationDateTime}">
+                                       
+                                </m:Input>
+                            </m:HBox>
+                            <!-- <HBox>
+                                <Label class="infoTitle" text="{i18n>detailIncidentCategory} "/>
+                                <Select id="infoIncidentCategorySelect" width="10rem" enabled="false"
+                                        selectedKey="{IncidentServiceIssueCategoryID}"
+                                        items="{IncidentModel>/results}">
+                                    <core:Item key="{IncidentModel>ServiceIssueCategoryID}"
+                                               text="{IncidentModel>Name/content}"/>
+                                </Select>
+                            </HBox> -->
+                        </m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+
+					
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" id="employmentSection" title="Attachments">
+				<subSections>
+					<ObjectPageSubSection id="employmentSectionSS1" >
+						<blocks>
+                        <m:VBox>
+                        <m:VBox class="detailsBox">
+                            <m:Label id="idLableAttach" text="{i18n>detailUploadAnAttachment}"/>
+                            <u:FileUploader id="fileUploader" tooltip="Upload an attachment"
+                                            uploadComplete="onUploadComplete" change="onFileChange"/>
+                            <m:Button id="uploadFileButton" text="{i18n>detailUploadFile}" press="onFileUpload"/>
+                        </m:VBox>
+                        <m:VBox>
+                        <m:UploadCollection id="UploadCollection" multiple="false" mode="SingleSelectMaster" change="onDocumentUpload" instantUpload="true"
+										selectionChange="onSelectionChange" uploadComplete="onUploadComplete" fileDeleted="onFileDeleted" beforeUploadStarts="onBeforeUploadStarts"
+										fileRenamed="onFileRenamed" uploadTerminated="onUploadTerminated" items="{path: 'AttachmentModel>/', templateShareable: true}"
+										noDataText="No Files exist. Please upload an URL/File" noDataDescription="No Files exist. Please upload an URL/File" showSeparators="All"
+										numberOfAttachmentsText="" uploadEnabled="true" uploadButtonInvisible="true" sameFilenameAllowed="false">
+										<m:toolbar>
+											<m:OverflowToolbar id="idUploadCollOtoolbar" width="100%">
+												<!-- <m:Title id="attachmentTitle" text="{i18n>Attachments}"/> -->
+												<m:ToolbarSpacer/>
+												<!-- <m:Button id="addLinkDocButton" text="{i18n>Add_Link}" press="addLinkDocUpload" enabled="true" visible="true" type="Transparent"/> -->
+												<m:UploadCollectionToolbarPlaceholder/>
+											</m:OverflowToolbar>
+										</m:toolbar>
+										<m:items>
+											<m:UploadCollectionItem documentId="{AttachmentModel>Name}" fileName="{AttachmentModel>Name}" url="{AttachmentModel>url}"
+												thumbnailUrl="{AttachmentModel>thumbnailUrl}" enableEdit="true" mimeType="{AttachmentModel>doctype}" enableDelete="true"
+												visibleDelete="false" visibleEdit="false" press="onOpeningFile">
+												<m:attributes>
+													<m:ObjectAttribute title="{UploadedBy}" text="Uploaded By: {AttachmentModel>CreatedBy}" active="false"/>
+													<m:ObjectAttribute title="{UploadedOn}" text="Uploaded On: {path : 'AttachmentModel>CreatedOn', formatter : '.formatAttribute'}"
+														active="false"/>
+													<m:ObjectAttribute title="{FileSize}" text="{path : 'AttachmentModel>docsize', formatter : '.formatFileSize'}" active="false"/>
+												</m:attributes>
+											</m:UploadCollectionItem>
+										</m:items>
+									</m:UploadCollection>
+                                    </m:VBox>
+							<!-- <employment:BlockJobInfoPart1 id="jobinfopart1"/>
+							<employment:BlockJobInfoPart2 id="jobinfopart2"/>
+							<employment:BlockJobInfoPart3 id="jobinfopart3"/> -->
+                            </m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+
+					<!--  -->
+
+					
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer />
+				<m:Button type="Accept" text="Accept"/>
+				<m:Button type="Reject" text="Reject"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+        </semantic:content>
+<semantic:positiveAction>
+            <semantic:PositiveAction text="Accept Solution" id="setToAcceptBtn" press="onSetToAccept" visible="false"/>
+        </semantic:positiveAction>
+        <semantic:negativeAction>
+            <semantic:NegativeAction text="Reject Solution" id="setToRejectBtn" press="onSubmitRejectPress" visible="false"/>
+        </semantic:negativeAction>
+        <!-- <semantic:editAction>
+            <semantic:EditAction id="edit" press="onEdit"/>
+        </semantic:editAction> -->
+        <semantic:saveAction>
+            <semantic:SaveAction id="save" press="onSave" visible="false"/>
+        </semantic:saveAction>
+        <semantic:cancelAction>
+            <semantic:CancelAction id="cancel" press="onCancel" visible="false"/>
+        </semantic:cancelAction>
+    </semantic:DetailPage>
+</mvc:View>

@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleFilterDialogConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem
+				text="Status"
+				key="ServiceRequestUserLifeCycleStatusCode"
+				multiSelect="true">
+				<items>
+					<ViewSettingsItem text="Open" key="1" />
+					<ViewSettingsItem text="In Process - Working on it" key="2" />
+                    <ViewSettingsItem text="In process - Awaiting Customer Info" key="4" />
+                    <ViewSettingsItem text="Completed" key="5" />
+                    <ViewSettingsItem text="Closed" key="6" />
+				</items>
+			</ViewSettingsFilterItem>
+			
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>
